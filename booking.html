@@ -233,8 +233,7 @@
                   <select id="instructor">
                     <option value="">Any available coach</option>
                     <option value="Coach A (FIDE Master)">Coach A — FIDE Master</option>
-                    <option value="Coach B (WIM)">Coach B — WIM</option>
-                    <option value="Coach C (IM)">Coach C — IM</option>
+                    <option value="Coach B (WIM)">Coach B </option>
                   </select>
                 </div>
               </div>
@@ -418,22 +417,18 @@
       </div>
       <div>
         <strong>Contact</strong>
-        <p class="muted">Email: <a href="mailto:info@smchessacademy.com">info@smchessacademy.com</a><br>
-        WhatsApp: <a href="https://wa.me/919876543210" target="_blank">+91 98765 43210</a></p>
+        <p class="muted">Email: <a href=""></a><br>
+        WhatsApp: <a href="" target="_blank"></a></p>
       </div>
     </div>
     <div class="container copyright">© 2025 SM Chess Academy</div>
   </footer>
 
   <script>
-    /*************************************************************************
-     * Configuration & state
-     * - Replace FORM_ENDPOINT with your Formspree endpoint or your API endpoint.
-     * - Configure availability in `availability` (simple demo).
-     *************************************************************************/
-    const FORM_ENDPOINT = "https://formspree.io/f/yourformid"; // <-- REPLACE with your endpoint
+   
+    const FORM_ENDPOINT = "https://formspree.io/f/yourformid"; 
 
-    // Simple availability: next 21 days; skip Sundays; each date has a set of times (24-hour).
+    
     const availability = (() => {
       const days = {};
       const today = new Date();
@@ -442,14 +437,14 @@
         d.setDate(today.getDate()+i);
         const iso = d.toISOString().slice(0,10);
         const weekday = d.getDay();
-        // Example: Sundays unavailable
+       
         if (weekday === 0) { days[iso] = []; continue; }
-        // On Saturdays, fewer slots
+
         if (weekday === 6) {
           days[iso] = ["10:00","11:00","16:00"];
           continue;
         }
-        // Weekdays: many slots
+       
         days[iso] = ["09:00","10:00","11:00","16:00","17:00","18:00"];
       }
       return days;
@@ -470,9 +465,7 @@
       whatsapp: ""
     };
 
-    /*************************************************************************
-     * Utility helpers
-     *************************************************************************/
+
     function el(q) { return document.querySelector(q); }
     function els(q) { return Array.from(document.querySelectorAll(q)); }
     function setText(id, value) { const el = document.getElementById(id); if(el) el.textContent = value || "—"; }
@@ -496,9 +489,7 @@
       });
     }
 
-    /*************************************************************************
-     * Render calendar quick list and date input constraints
-     *************************************************************************/
+ 
     const calendarGrid = el("#calendarGrid");
     const dateInput = el("#datePicker");
     function renderCalendar() {
@@ -553,9 +544,7 @@
       });
     }
 
-    /*************************************************************************
-     * Validation helpers
-     *************************************************************************/
+    
     function validateStep(step) {
       let ok = true;
       clearErrors();
@@ -601,9 +590,7 @@
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    /*************************************************************************
-     * Event wiring and navigation
-     *************************************************************************/
+   
     document.addEventListener("DOMContentLoaded", ()=> {
       renderCalendar();
 
